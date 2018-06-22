@@ -1,0 +1,13 @@
+<div *ngIf="pet_mode" class="mt-2">
+  <p>宠物有什么症状？</p>
+  <button type="button" class="btn btn-lg mr-2" *ngFor="let label of labels"
+          [ngClass]="{'btn-light': selected.indexOf(label.id)<0, 'btn-success': selected.indexOf(label.id)>-1}"
+          (click)="select(label.id)">{{label.name}}
+  </button>
+  <hr class="my-4"/>
+  <label for="basic" class="text-info"><i class="fa fa-info-circle"></i> 您也可以输入症状(多个症状逗号分隔)</label>
+  <input id="basic" type="text" class="form-control" [(ngModel)]="label_text" [ngbTypeahead]="search"/>
+
+  <a class="btn btn-danger btn-block mt-2 mb-2" routerLink="/result"><i class="fa fa-crosshairs"></i> 开始诊断</a>
+  <a class="btn btn-outline-dark mt-2 mb-2" routerLink="/choose-pet"><i class="fa fa-reply"></i> 重新诊断</a>
+</div>
