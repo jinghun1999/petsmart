@@ -1,0 +1,26 @@
+<div class="login-page" [@routerTransition]>
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <img src="assets/images/logo.jpg" width="150px" class="user-avatar"/>
+      <h1>登录宠微店</h1>
+      <form role="form" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+        <div class="form-content">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <input type="text" ng-model="name" class="form-control input-underline input-lg" placeholder="用户名/手机"
+                   name="username" [(ngModel)]="model.username" #username="ngModel" required>
+            <div *ngIf="f.submitted && !username.valid" class="help-block">请输入用户名</div>
+          </div>
+
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <input type="password" class="form-control input-underline input-lg" placeholder="登录密码" name="password"
+                   [(ngModel)]="model.password" #password="ngModel" required>
+            <div *ngIf="f.submitted && !password.valid" class="help-block">请输入密码</div>
+          </div>
+        </div>
+        &nbsp;<button [disabled]="loading" class="btn rounded-btn"> 登 录</button>
+        &nbsp;
+        <a class="" [routerLink]="['/signup']">忘记密码？</a>
+      </form>
+    </div>
+  </div>
+</div>

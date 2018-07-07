@@ -6,7 +6,6 @@ import {Component, OnInit, Input, OnDestroy} from '@angular/core';
   styleUrls: ['./analyze-result.component.css']
 })
 export class AnalyzeResultComponent implements OnInit, OnDestroy {
-  title = '诊断结果';
   public process = 0;
   private timer;
   @Input() labels: number[];

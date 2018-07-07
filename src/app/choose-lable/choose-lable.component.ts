@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Observable} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import {LABELS} from '../models/mock-labels';
+import {LABELS} from '../_models/mock-labels';
 
 const states = ['发烧', '流鼻涕', '恶心', '呕吐', '大便有血', '大便粘液', '食欲不振'];
 
