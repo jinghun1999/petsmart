@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChooseLableComponent } from './choose-lable.component';
+import { ChooseLableComponent } from './choose-label.component';
 
 describe('ChooseLableComponent', () => {
   let component: ChooseLableComponent;

@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
@@ -12,7 +11,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AuthGuard} from './_guard/index';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {AuthenticationService} from './_services';
+import {AuthService} from './services';
+import {httpInterceptor} from './shared/interceptor/interpectors';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -38,8 +38,8 @@ export const createTranslateLoader = (http: HttpClient) => {
   declarations: [AppComponent],
   providers: [
     AuthGuard,
-    AuthenticationService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    httpInterceptor,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

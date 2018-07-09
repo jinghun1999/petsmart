@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Observable} from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import {LABELS} from '../_models/mock-labels';
+import {LABELS} from '../../_models/mock-labels';
 
 const states = ['发烧', '流鼻涕', '恶心', '呕吐', '大便有血', '大便粘液', '食欲不振'];
 
 @Component({
-  selector: 'app-choose-lable',
-  templateUrl: './choose-lable.component.html',
-  styleUrls: ['./choose-lable.component.css']
+  selector: 'app-choose-label',
+  templateUrl: './choose-label.component.html',
+  styleUrls: ['./choose-label.component.css']
 })
-export class ChooseLableComponent implements OnInit {
+export class ChooseLabelComponent implements OnInit {
   title = '宠物症状';
   public label_text: string;
   selected: number[];
@@ -36,9 +36,9 @@ export class ChooseLableComponent implements OnInit {
       distinctUntilChanged(),
       map(term => term.length < 1 ? []
         : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
-    )
+    );
 
-  select (id: number): void {
+  select(id: number): void {
     const index = this.selected.indexOf(id);
     if (index > -1) {
       this.selected.splice(index, 1);
@@ -47,7 +47,7 @@ export class ChooseLableComponent implements OnInit {
     }
   }
 
-  analyze (): void {
+  analyze(): void {
 
   }
 }

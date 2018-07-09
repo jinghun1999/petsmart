@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../router.animations';
-import { AuthenticationService } from '../_services/index';
+import { AuthService } from '../services/index';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthService) {
   }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     // console.log('')
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/homepage';
     // this.returnUrl = '/dashboard/home';
   }
 

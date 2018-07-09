@@ -6,15 +6,18 @@
     <h1 class="display-4">猫咪</h1>
     <p class="lead">选择猫咪，下面将会为您推送猫咪的相关病症选择</p>
     <p class="lead">
-      <a class="btn btn-info btn-block btn-lg" routerLink="/choose-label/1" role="button">选择 <i class="fa fa-arrow-circle-right"></i></a>
+      <a class="btn btn-info btn-block btn-lg" routerLink="/aider/choose-label/1" role="button">选择 <i
+        class="fa fa-arrow-circle-right"></i></a>
     </p>
   </div>
   <div class="jumbotron">
     <h1 class="display-4">汪星人</h1>
     <p class="lead">选择狗狗，下面将会为您推送狗狗的相关病症选择</p>
     <p class="lead">
-      <a class="btn btn-info btn-block btn-lg" routerLink="/choose-label/2" role="button" (click)="onSelect('狗')">选择 <i class="fa fa-arrow-circle-right"></i></a>
+      <a class="btn btn-info btn-block btn-lg" routerLink="/aider/choose-label/2" role="button" (click)="onSelect('狗')">选择 <i
+        class="fa fa-arrow-circle-right"></i></a>
     </p>
   </div>
 </div>
-<a class="btn btn-outline-danger mt-2 mb-2" routerLink="/choose-pet" *ngIf="selectedPetMode"><i class="fa fa-arrow-circle-o-left"></i> 重新诊断</a>
+<a class="btn btn-outline-danger mt-2 mb-2" routerLink="/aider/choose-pet" *ngIf="selectedPetMode"><i
+  class="fa fa-arrow-circle-o-left"></i> 重新诊断</a>

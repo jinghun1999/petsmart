@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../router.animations';
-import {UserToken} from '../_models/user-token';
-import {AuthenticationService} from '../_services';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {routerTransition} from '../router.animations';
+import {UserToken} from '../_models/user-token';
+import {AuthService} from '../services';
 
 @Component({
   selector: 'app-homepage',
@@ -11,20 +11,22 @@ import {Router} from '@angular/router';
   animations: [routerTransition()]
 })
 export class HomepageComponent implements OnInit {
-  currentUser: UserToken;
-  constructor(
-    private router: Router,
-    private authService: AuthenticationService
-  ) { }
+  currentUser: UserToken = null;
+
+  constructor(private router: Router,
+              private authService: AuthService) {
+    this.currentUser = this.authService.currentUser;
+  }
 
   ngOnInit() {
-    debugger
-    alert('lll')
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   logout() {
-    this.authService.logout();
-    this.router.navigate(['/']);
+    this.authService.logout().subscribe(res => {
+      sessionStorage.removeItem('jwt');
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('loginParams');
+      this.router.navigate(['/login']);
+    });
   }
 }
