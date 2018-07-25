@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { routerTransition } from '../router.animations';
-import { AuthService } from '../services/index';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {routerTransition} from '../router.animations';
+import {AuthService} from '../services/index';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // reset login status
-    this.authenticationService.logout();
+    this.authenticationService.logout().subscribe(res => {
+    });
 
     // get return url from route parameters or default to '/'
     // console.log('')

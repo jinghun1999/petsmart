@@ -64,7 +64,4 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post<any>(environment.baseUrl + '/account/logout', {});
   }
-  private log(message: string) {
-    // this.messageService.add('HeroService: ' + message);
-  }
 }
