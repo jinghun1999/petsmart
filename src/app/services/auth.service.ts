@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, delay, map, tap} from 'rxjs/operators';
 import {LogService} from './log.service';
@@ -17,12 +17,20 @@ export class AuthService {
     private http: HttpClient,
     private logService: LogService,
   ) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (this.currentUser) {
-      this.token = `${this.currentUser.token_type} ${this.currentUser.access_token}`;
-    }
+    this.setUser(true);
   }
 
+  setUser(isLogin: boolean): void {
+    if (isLogin) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (this.currentUser) {
+        this.token = `${this.currentUser.token_type} ${this.currentUser.access_token}`;
+      }
+    } else {
+      this.currentUser = null;
+      this.token = null;
+    }
+  }
   login(username: string, password: string): Observable<UserToken> {
     const params = 'name=' + username + '&pwd=' + password;
     this.loginParams = {
@@ -35,7 +43,7 @@ export class AuthService {
       tap((user: UserToken) => {
         if (user) {
           this.token = `${user.token_type} ${user.access_token}`;
-          sessionStorage.setItem('jwt', this.token);
+          localStorage.setItem('jwt', this.token);
           localStorage.setItem('currentUser', JSON.stringify(user));
           localStorage.setItem('loginParams', JSON.stringify(this.loginParams));
         }

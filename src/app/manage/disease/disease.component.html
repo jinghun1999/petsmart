@@ -6,21 +6,25 @@
       <table class="table table-sm">
         <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>门店名称</th>
+          <th>门店地址</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        <tr *ngFor="let o of pageData.rows">
+          <td>{{o.Name}}</td>
+          <td>{{o.Address}}</td>
         </tr>
         </tbody>
       </table>
+      <ngb-pagination [collectionSize]="total"
+                      [(page)]="page"
+                      [maxSize]="5"
+                      [rotate]="true"
+                      [ellipses]="true"
+                      [boundaryLinks]="true"
+                      (pageChange)="pageChanged($event)"
+                      class="d-flex justify-content-end"></ngb-pagination>
     </div>
   </div>
 </div>

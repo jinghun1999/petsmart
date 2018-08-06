@@ -11,12 +11,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
+        <tr *ngFor="let o of pageData.rows">
+          <td>{{o.Name}}</td>
+          <td>{{o.Address}}</td>
         </tr>
         </tbody>
       </table>
+      <ngb-pagination [collectionSize]="total"
+                      [(page)]="page"
+                      [maxSize]="5"
+                      [rotate]="true"
+                      [ellipses]="true"
+                      [boundaryLinks]="true"
+                      (pageChange)="pageChanged($event)"
+                      class="d-flex justify-content-end"></ngb-pagination>
     </div>
   </div>
 </div>

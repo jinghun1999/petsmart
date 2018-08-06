@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthService} from '../../../services';
+import {UserToken} from '../../../_models/user-token';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +10,14 @@ import {AuthService} from '../../../services';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  pushRightClass: string = 'push-right';
+  pushRightClass = 'push-right';
+  public currentUser: UserToken = new UserToken();
 
   constructor(private translate: TranslateService,
               public router: Router,
               private authService: AuthService) {
+
+    this.currentUser = this.authService.currentUser;
 
     this.translate.addLangs(['en', 'zh-CHS']);
     this.translate.setDefaultLang('en');

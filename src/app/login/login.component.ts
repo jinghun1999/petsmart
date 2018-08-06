@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthService) {
+    private authService: AuthService) {
   }
 
   ngOnInit() {
     // reset login status
-    this.authenticationService.logout().subscribe(res => {
+    this.authService.logout().subscribe(res => {
     });
 
     // get return url from route parameters or default to '/'
@@ -33,14 +33,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
-    this.authenticationService.login(this.model.username, this.model.password).subscribe(data => {
+    this.authService.login(this.model.username, this.model.password).subscribe(data => {
       if (data) {
+        this.authService.setUser(true);
         // this.alertService.success('登录成功');
         this.router.navigate([this.returnUrl]);
       } else {
         // this.alertService.error('请重试');
         this.loading = false;
-
       }
     });
   }

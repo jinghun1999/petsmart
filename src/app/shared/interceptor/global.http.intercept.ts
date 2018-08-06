@@ -18,13 +18,11 @@ export class GlobalHttpIntercept implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let globalReq = req;
     debugger;
-    // this.logService.print(`全局HTTP拦截器发起请求${req.url}`);
-    if (
-      req.url.includes('assets/i18n') ||
+    let globalReq = req;
+    this.logService.print(`全局HTTP拦截器发起请求${req.url}`);
+    if (req.url.includes('assets/i18n') ||
       req.url.includes('api/account/login') ||
-      // req.url.includes('api/account/logout') ||
       req.url.includes('api/user/forgetPassword') ||
       req.url.includes('api/email/send') ||
       req.url.includes('api/email/checkEmailCode') ||
@@ -34,7 +32,7 @@ export class GlobalHttpIntercept implements HttpInterceptor {
       globalReq = globalReq.clone({setHeaders: {'Content-Type': 'application/json'}});
     } else {
       // console.log(`服务器需要校验jwt`);
-      globalReq = globalReq.clone({setHeaders: {'Authorization': sessionStorage.getItem('jwt')}});
+      globalReq = globalReq.clone({setHeaders: {Authorization: localStorage.getItem('jwt')}});
       if (req.url.includes('gdd/excel/export')) { // 导出操作
         globalReq = globalReq.clone({setHeaders: {'Content-Type': 'application/json'}});
         globalReq = globalReq.clone({responseType: 'blob'});

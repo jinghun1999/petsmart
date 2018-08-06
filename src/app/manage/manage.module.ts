@@ -17,7 +17,6 @@ import {ManageRoutingModule} from './manage.routing.module';
     TranslateModule,
     NgbDropdownModule.forRoot(),
     ManageRoutingModule,
-    // PageHeaderModule
   ],
   declarations: [ManageComponent, HeaderComponent, SidebarComponent]
 })

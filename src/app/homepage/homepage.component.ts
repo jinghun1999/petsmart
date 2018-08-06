@@ -11,10 +11,11 @@ import {AuthService} from '../services';
   animations: [routerTransition()]
 })
 export class HomepageComponent implements OnInit {
-  currentUser: UserToken = null;
+  public currentUser: UserToken = new UserToken();
 
   constructor(private router: Router,
               private authService: AuthService) {
+    debugger;
     this.currentUser = this.authService.currentUser;
   }
 
@@ -23,7 +24,8 @@ export class HomepageComponent implements OnInit {
 
   logout() {
     this.authService.logout().subscribe(res => {
-      sessionStorage.removeItem('jwt');
+      this.authService.setUser(false);
+      localStorage.removeItem('jwt');
       localStorage.removeItem('currentUser');
       localStorage.removeItem('loginParams');
       this.router.navigate(['/login']);
