@@ -4,9 +4,9 @@
     <p class="lead">为宠物诊疗小店提供库存管理和辅助诊疗特色功能，帮助快速定位宠物疾病并提供提供用药方案</p>
     <hr class="my-4">
     <p class="lead">
-      <a class="btn btn-outline-dark btn-lg" *ngIf="!currentUser" routerLink="/login">此功能需要登录才能使用，现在登录</a>
-      <a class="btn btn-primary btn-lg" routerLink="/manage/dashboard" *ngIf="currentUser" role="button">手机号{{currentUser.userName}}已登录，开始使用 <i class="fa fa-arrow-circle-o-right"></i> </a>
-      <a class="btn btn-danger btn-lg ml-2" *ngIf="currentUser" role="button" (click)="logout()">退出</a>
+      <a class="btn btn-outline-dark btn-lg" *ngIf="!currentUser" routerLink="/login">登录</a>
+      <a class="btn btn-primary btn-lg mb-2" routerLink="/manage/dashboard" *ngIf="currentUser" role="button">已登录，开始使用 <i class="fa fa-arrow-circle-o-right"></i> </a>
+      <a class="btn btn-danger btn-lg ml-2 mb-2" *ngIf="currentUser" role="button" (click)="logout()">退出</a>
     </p>
   </div>
 </div>

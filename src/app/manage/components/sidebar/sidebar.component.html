@@ -1,112 +1,113 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-    <div class="list-group">
-        <a routerLink="/manage/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ '首页' | translate }}
-        </a>
-        <a [routerLink]="['hospital']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-          <i class="fa fa-fw fa-bank"></i>&nbsp;{{ '门店管理' | translate }}
-        </a>
-        <a [routerLink]="['disease']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bug"></i>&nbsp;{{ '疾病管理' | translate }}
-        </a>
-        <a [routerLink]="['/aider']" target="_blank" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-medkit"></i>&nbsp;{{ '辅助诊疗' | translate }}
-        </a>
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('pages')">
-                <span><i class="fa fa-plus"></i>&nbsp; {{ '其他功能' | translate }}</span>
-            </a>
-            <li class="nested" [class.expand]="showMenu === 'pages'">
-                <ul class="submenu">
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ '功能1' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ '功能2' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ '功能3' | translate }}</span></a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-        <div class="header-fields">
-            <a (click)="rltAndLtr()" class="list-group-item">
-                <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
-            </a>
-            <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('languages')">
-                    <span><i class="fa fa-language"></i>&nbsp; {{ 'Language' | translate }} <b class="caret"></b></span>
-                </a>
-                <li class="nested" [class.expand]="showMenu === 'languages'">
-                    <ul class="submenu">
-                        <li>
-                            <a href="javascript:void(0)" (click)="changeLang('en')">
-                                {{ 'English' | translate }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" (click)="changeLang('fr')">
-                                {{ 'French' | translate }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" (click)="changeLang('ur')">
-                                {{ 'Urdu' | translate }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" (click)="changeLang('es')">
-                                {{ 'Spanish' | translate }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" (click)="changeLang('it')">
-                                {{ 'Italian' | translate }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" (click)="changeLang('fa')">
-                                {{ 'Farsi' | translate }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" (click)="changeLang('de')">
-                                {{ 'German' | translate }}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('profile')">
-                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
-                </a>
-                <li class="nested" [class.expand]="showMenu === 'profile'">
-                    <ul class="submenu">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/login']" (click)="onLoggedout()">
-                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-        </div>
+  <div class="list-group">
+    <a routerLink="/manage/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ '首页' | translate }}
+    </a>
+    <a [routerLink]="['hospital']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-fw fa-bank"></i>&nbsp;{{ '门店管理' | translate }}
+    </a>
+    <a [routerLink]="['disease']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-fw fa-bug"></i>&nbsp;{{ '疾病管理' | translate }}
+    </a>
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages')">
+        <span><i class="fa fa-cubes"></i>&nbsp; {{ '库存管理' | translate }}</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a [routerLink]="['disease']"
+               [routerLinkActive]="['router-link-active']"><span>{{ '药品目录' | translate }}</span></a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"><span>{{ '功能2' | translate }}</span></a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"><span>{{ '功能3' | translate }}</span></a>
+          </li>
+        </ul>
+      </li>
     </div>
+    <a [routerLink]="['/aider']" target="_blank" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-fw fa-medkit"></i>&nbsp;{{ '辅助诊疗' | translate }}
+    </a>
+    <div class="header-fields">
+      <a (click)="rltAndLtr()" class="list-group-item">
+        <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
+      </a>
+      <div class="nested-menu" hidden>
+        <a class="list-group-item" (click)="addExpandClass('languages')">
+          <span><i class="fa fa-language"></i>&nbsp; {{ 'Language' | translate }} <b class="caret"></b></span>
+        </a>
+        <li class="nested" [class.expand]="showMenu === 'languages'">
+          <ul class="submenu">
+            <li>
+              <a href="javascript:void(0)" (click)="changeLang('en')">
+                {{ 'English' | translate }}
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changeLang('fr')">
+                {{ 'French' | translate }}
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changeLang('ur')">
+                {{ 'Urdu' | translate }}
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changeLang('es')">
+                {{ 'Spanish' | translate }}
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changeLang('it')">
+                {{ 'Italian' | translate }}
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changeLang('fa')">
+                {{ 'Farsi' | translate }}
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changeLang('de')">
+                {{ 'German' | translate }}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="nested-menu">
+        <a class="list-group-item" (click)="addExpandClass('profile')">
+          <span><i class="fa fa-user"></i>&nbsp; {{currentUser.userName}}</span>
+        </a>
+        <li class="nested" [class.expand]="showMenu === 'profile'">
+          <ul class="submenu">
+            <li hidden>
+              <a href="javascript:void(0)">
+                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
+              </a>
+            </li>
+            <li hidden>
+              <a href="javascript:void(0)">
+                <span><i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}</span>
+              </a>
+            </li>
+            <li hidden>
+              <a href="javascript:void(0)">
+                <span><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/login']" (click)="onLoggedout()">
+                <span><i class="fa fa-fw fa-power-off"></i> {{ '退出' | translate }}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </div>
 </nav>

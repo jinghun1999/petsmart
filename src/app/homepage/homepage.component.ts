@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {routerTransition} from '../router.animations';
-import {UserToken} from '../_models/user-token';
+import {UserToken} from '../models/user-token';
 import {AuthService} from '../services';
 
 @Component({
@@ -15,7 +15,6 @@ export class HomepageComponent implements OnInit {
 
   constructor(private router: Router,
               private authService: AuthService) {
-    debugger;
     this.currentUser = this.authService.currentUser;
   }
 

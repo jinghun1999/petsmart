@@ -4,8 +4,8 @@ import {Observable, of} from 'rxjs';
 import {catchError, delay, map, tap} from 'rxjs/operators';
 import {LogService} from './log.service';
 import {environment} from '../../environments/environment';
-import {LoginParams} from '../_models/loginParams';
-import {UserToken} from '../_models/user-token';
+import {LoginParams} from '../models/loginParams';
+import {UserToken} from '../models/user-token';
 
 @Injectable()
 export class AuthService {
@@ -70,6 +70,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
+    localStorage.removeItem('currentUser');
     return this.http.post<any>(environment.baseUrl + '/account/logout', {});
   }
 }

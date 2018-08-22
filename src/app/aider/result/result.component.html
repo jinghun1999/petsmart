@@ -3,7 +3,25 @@
     <span>系统正在诊断，请稍后...</span>
     <ngb-progressbar type="success" [value]='process'>已完成{{process}}%</ngb-progressbar>
   </p>
-  <div *ngIf="process===100">
+  <div *ngIf="process === 100">
+    <ngb-alert [dismissible]="false">
+      <strong>以下为分析结果，注意：</strong> 通过对您选择的宠物症状分析发现，该宠物疑似有如下疾病。本诊断结果仅作医生诊疗参考使用
+    </ngb-alert>
+    <div>
+      <h3>热射病<small>(疑似)</small></h3>
+      <p>具体症状：体温急剧升高（41～42℃）,呼吸急促以致呼吸困难。心跳加快，末梢静脉扩张，恶心、呕吐。粘膜初呈鲜红色，逐渐发绀，瞳孔散大，随病情改善而缩小。肾功能衰竭时，少尿或无尿。如治疗不及时，很快衰竭，表现痉挛、抽搐或昏睡。<a routerLink="/aider/medicate/1">查看详情 &gt;</a></p>
+    </div>
+    <hr/>
+    <div>
+      <h3>口炎<small>(疑似)</small></h3>
+      <p>具体症状：1.口腔粘膜红、肿、热、痛，感觉过敏，咀嚼障碍，流涎，口腔恶臭，局部淋巴结肿大或柔软，拒绝检查口腔。<br/>
+        2.水泡性口炎：在口腔粘膜上散在米粒大小泡，<br/>
+        3.溃疡性口炎：口腔粘膜及齿龈上有糜烂、坏死或溃疡面、齿龈出血。<br/>
+        3.霉菌性口炎：口腔粘膜上形成柔软、灰白色、稍隆起的斑点，口角流出浓稠的唾液。<a routerLink="/aider/medicate/2">查看详情 &gt;</a></p>
+    </div>
+    <hr/>
+  </div>
+  <div hidden>
     <div class="alert alert-info" role="alert" style="border-radius: 0;">
       <i class="fa fa-compass"></i> <strong>诊断结果</strong> 结果仅供参考，具体诊断请咨询医生
     </div>

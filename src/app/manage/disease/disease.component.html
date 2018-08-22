@@ -2,18 +2,32 @@
   <app-page-header [heading]="'疾病维护'"></app-page-header>
   <div class="row">
     <div class="col-md-12">
-      <h2 class="text-muted">疾病库</h2>
+      <h2 class="text-muted">疾病库
+        <a class="btn btn-sm btn-outline-primary" routerLink="edit/0"><i class="fa fa-plus"></i> 添加</a></h2>
+      <div class="btn-group btn-group-toggle mb-2" ngbRadioGroup name="radioBasic" [(ngModel)]="selectedAnimal">
+        <label ngbButtonLabel class="btn-primary">
+          <input ngbButton type="radio" value="猫" (click)="changeAnimal()"> 猫
+        </label>
+        <label ngbButtonLabel class="btn-primary">
+          <input ngbButton type="radio" value="狗" (click)="changeAnimal()"> 狗
+        </label>
+        <label ngbButtonLabel class="btn-primary">
+          <input ngbButton type="radio" value="其他" (click)="changeAnimal()"> 其他
+        </label>
+      </div>
       <table class="table table-sm">
         <thead>
         <tr>
-          <th>门店名称</th>
-          <th>门店地址</th>
+          <th>类别</th>
+          <th>疾病</th>
+          <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let o of pageData.rows">
-          <td>{{o.Name}}</td>
-          <td>{{o.Address}}</td>
+        <tr *ngFor="let o of rows">
+          <td>{{o.Classify}}</td>
+          <td>{{o.DiseaseName}}</td>
+          <td><a routerLink="edit/{{o.Id}}">修改</a> </td>
         </tr>
         </tbody>
       </table>

@@ -1,0 +1,143 @@
+<h2><i class="fa fa-bug"></i> 热射病</h2>
+<div class="card mb-2">
+  <div class="card-body">
+    <h5 class="card-title">症状</h5>
+    <h6 class="card-subtitle mb-2 text-info">可能的症状如下</h6>
+    <p class="card-text">
+      体温急剧升高（41～42℃）,呼吸急促以致呼吸困难。心跳加快，末梢静脉扩张，恶心、呕吐。粘膜初呈鲜红色，逐渐发绀，瞳孔散大，随病情改善而缩小。肾功能衰竭时，少尿或无尿。如治疗不及时，很快衰竭，表现痉挛、抽搐或昏睡。</p>
+  </div>
+</div>
+<div class="card mb-2">
+  <div class="card-body">
+    <h5 class="card-title">确诊方法</h5>
+    <h6 class="card-subtitle mb-2 text-info">如何确诊为疑似疾病？</h6>
+    <p class="card-text">暂无</p>
+  </div>
+</div>
+<div class="card mb-2">
+  <div class="card-body">
+    <h5 class="card-title">用药描述</h5>
+    <h6 class="card-subtitle mb-2 text-info">用药描述仅供参考，具体处方请根据具体情况处理</h6>
+    <p class="card-text">
+      氯丙嗪1-2mg/kg肌注进行降温。对昏迷的—皮注洋地黄制剂；兴奋狂躁的—利血平、眠而通；休克的—静注加5%碳酸氢钠的林格氏液，输液中注意监测Ht值，防止肺水肿。如排尿量多继续输液，必要时留置导尿管
+      短头品种有上呼吸道障碍、粘膜发绀的犬，行气管插管，充分输氧 严重休克时，地塞米松 肺水肿时，立即静脉泻血100-300mg，随即静脉输入复方氯化钠溶液或10%G300-500mg。还可用三棱针刺耳尖、尾尖等穴位放血</p>
+  </div>
+</div>
+<hr/>
+<h5>医师处方</h5>
+<table class="table table-sm">
+  <thead class="thead-dark">
+  <tr>
+    <th>药品名称</th>
+    <th>数量</th>
+    <th>价格</th>
+    <th>说明</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let o of medication">
+    <td>{{o.name}}</td>
+    <td><input type="number" class="form-control form-control-sm col-sm-4" min="0" [(ngModel)]="o.count" name="count"/></td>
+    <td>{{o.price * o.count}}</td>
+    <td>{{o.desc}}</td>
+    <td><a class="text-danger" routerLink="." (click)="delete_med(o)">删除</a></td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td>
+      <button class="btn btn-sm btn-info" (click)="open(content)">添加</button>
+    </td>
+    <td colspan="4" class="text-right"><h4>总价：<strong class="text-danger">￥{{total_price|number}}</strong></h4></td>
+  </tr>
+  </tfoot>
+</table>
+
+<hr/>
+<h5>会员</h5>
+<form class="form-inline mb-5" #myForm="ngForm" action="" (ngSubmit)="onSubmit(myForm.value)">
+  <div class="form-group">
+    <label for="mobile">手机</label>
+    <input type="text" id="mobile" name="mobile" class="form-control mx-sm-4" placeholder="请输入11位手机号码" [(ngModel)]="mobile" [ngbTypeahead]="search_mobile"/>
+  </div>
+  <div class="form-group">
+    <label for="guest">姓名</label>
+    <input type="text" id="guest" class="form-control mx-sm-4" placeholder="请输入会员真实姓名" name="guest" (ngModel)="mobile"/>
+  </div>
+  <button class="btn btn-danger" (click)="open(content_print)">结算并打印取药单</button>
+</form>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">选择药品</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-inline">
+      <div class="form-group mr-sm-2 mb-1">
+        <label class="sr-only" for="search_name">搜索</label>
+        <input id="search_name" class="form-control form-control-sm" placeholder="请输入商品名/条码" name="dp">
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mb-1">搜索</button>
+    </form>
+    <table class="table table-sm table-hover">
+      <thead>
+      <tr>
+        <th>条码</th>
+        <th>药品</th>
+        <th>库存</th>
+        <th>售价</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let o of med_list">
+        <td>{{o.id}}</td>
+        <td>{{o.name}}</td>
+        <td>{{o.left_num}} {{o.standard}}</td>
+        <td>{{o.price}}</td>
+        <td><a routerLink="." (click)="select_med(o)">选用</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
+
+<ng-template #content_print let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-print-title">取药单</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-sm table-hover">
+      <thead>
+      <tr>
+        <th>药品</th>
+        <th>数量</th>
+        <th>价格</th>
+        <th>说明</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let o of medication">
+        <td>{{o.name}}</td>
+        <td>{{o.count}}</td>
+        <td>{{o.price * o.count}}</td>
+        <td>{{o.desc}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" class="text-right"><h4>总价：<strong class="text-danger">￥{{total_price|number}}</strong></h4></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="modal-footer"><button type="button" class="btn btn-light" (click)="c('Close click')"><i class="fa fa-print"></i> 打印</button></div>
+</ng-template>

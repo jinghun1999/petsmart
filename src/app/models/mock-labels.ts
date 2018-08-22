@@ -21,4 +21,4 @@ export const LABELS: Label[] = [
   {id: 18, name: '粪稀'},
   {id: 19, name: '大便粘液'},
   {id: 20, name: '清涎多'},
-]
+];

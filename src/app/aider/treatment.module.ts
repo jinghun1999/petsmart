@@ -7,7 +7,8 @@ import {TreatmentRoutingModule} from './treatment-routing.module';
 
 import {ChoosePetComponent} from './choose-pet/choose-pet.component';
 import {ChooseLabelComponent} from './choose-label/choose-label.component';
-import {AnalyzeResultComponent} from './analyze-result/analyze-result.component';
+import {ResultComponent} from './result/result.component';
+import { MedicateComponent } from './medicate/medicate.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import {AnalyzeResultComponent} from './analyze-result/analyze-result.component'
     NgbModule.forRoot(),
     TreatmentRoutingModule,
   ],
-  declarations: [TreatmentComponent, ChoosePetComponent, ChooseLabelComponent, AnalyzeResultComponent]
+  declarations: [TreatmentComponent, ChoosePetComponent, ChooseLabelComponent, ResultComponent, MedicateComponent]
 })
 export class TreatmentModule {
 }

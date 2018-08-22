@@ -2,10 +2,10 @@ import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-analyze-result',
-  templateUrl: './analyze-result.component.html',
-  styleUrls: ['./analyze-result.component.css']
+  templateUrl: './result.component.html',
+  styleUrls: ['./result.component.css']
 })
-export class AnalyzeResultComponent implements OnInit, OnDestroy {
+export class ResultComponent implements OnInit, OnDestroy {
   public process = 0;
   private timer;
   @Input() labels: number[];
