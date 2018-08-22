@@ -1,0 +1,53 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'数据报表'"></app-page-header>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-muted">诊疗记录 <small>辅助诊疗数据</small></h2>
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label for="shop" class="sr-only">所属医院</label>
+          <input type="text" class="form-control" id="shop" placeholder="所属医院">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="bar" class="sr-only">疾病</label>
+          <input type="text" class="form-control" id="bar" placeholder="疾病">
+        </div>
+        <div class="form-group mb-2">
+          <label for="drug_name" class="sr-only">会员</label>
+          <input type="text" class="form-control" id="drug_name" placeholder="会员/手机">
+        </div>
+        <button type="button" class="btn btn-primary mb-2">搜索</button>
+      </form>
+      <table class="table table-sm">
+        <thead>
+        <tr>
+          <th>所属医院</th>
+          <th>动物种类</th>
+          <th>诊断疾病</th>
+          <th>会员/手机</th>
+          <th>消费金额</th>
+          <th>诊断时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let o of rows">
+          <td>{{o.shop}}</td>
+          <td>{{o.animal}}</td>
+          <td>{{o.disease}}</td>
+          <td>{{o.guest}}</td>
+          <td>{{o.money}}</td>
+          <td>{{o.date}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <ngb-pagination [collectionSize]="total"
+                      [(page)]="page"
+                      [maxSize]="5"
+                      [rotate]="true"
+                      [ellipses]="true"
+                      [boundaryLinks]="true"
+                      (pageChange)="pageChanged($event)"
+                      class="d-flex justify-content-end"></ngb-pagination>
+    </div>
+  </div>
+</div>

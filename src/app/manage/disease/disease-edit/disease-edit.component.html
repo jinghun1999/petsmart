@@ -37,17 +37,87 @@
             <label for="dia_method" class="col-form-label">确诊方法</label>
             <textarea class="form-control" id="dia_method"></textarea>
           </div>
+          <div class="form-group">
+            <label for="label" class="col-form-label">症状标签</label>
+            <input type="text" class="form-control" id="label" placeholder="标签，如：咳嗽,高烧40度以上,厌食,流口水多">
+            <small class="text-muted">
+              <i class="fa fa-info-circle"></i> 在“辅助诊疗”功能，将快速匹配疾病，多个用逗号分隔
+            </small>
+          </div>
         </form>
       </div>
     </div>
   </div>
   <div class="col-md-6">
     <div class="card text-white bg-secondary mb-3">
-      <h5 class="card-header">用药信息</h5>
+      <h5 class="card-header">推荐用药 <small class="text-info">(用于辅助诊疗最后生成推荐药物单)</small></h5>
       <div class="card-body">
-
+        <table class="table table-sm">
+          <thead class="thead-dark">
+          <tr>
+            <th>药品名称</th>
+            <th>价格</th>
+            <th>说明</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let o of medication">
+            <td>{{o.name}}</td>
+            <td>{{o.price}}</td>
+            <td>{{o.desc}}</td>
+            <td><a class="text-danger" routerLink="." (click)="delete_med(o)">删</a></td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="4" class="text-right">
+              <button class="btn btn-sm btn-info" (click)="open(content)">添加</button>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
     <button type="button" class="btn btn-primary">保存</button>
   </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">选择药品</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-inline">
+      <div class="form-group mr-sm-2 mb-1">
+        <label class="sr-only" for="search_name">搜索</label>
+        <input id="search_name" class="form-control form-control-sm" placeholder="请输入商品名/条码" name="dp">
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm mb-1">搜索</button>
+    </form>
+    <table class="table table-sm table-hover">
+      <thead>
+      <tr>
+        <th>条码</th>
+        <th>药品</th>
+        <th>库存</th>
+        <th>售价</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let o of med_list">
+        <td>{{o.id}}</td>
+        <td>{{o.name}}</td>
+        <td>{{o.left_num}} {{o.standard}}</td>
+        <td>{{o.price}}</td>
+        <td><a routerLink="." (click)="select_med(o)">选用</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>

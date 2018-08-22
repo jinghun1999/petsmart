@@ -8,7 +8,7 @@ import {ManageComponent} from './manage.component';
 // import {PageHeaderModule} from '../shared/modules';
 import {HeaderComponent} from './components/header/header.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
-import {ManageRoutingModule} from './manage.routing.module';
+import {ManageRoutingModule} from './manage-routing.module';
 
 @NgModule({
   imports: [

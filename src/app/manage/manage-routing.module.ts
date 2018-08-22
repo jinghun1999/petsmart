@@ -11,8 +11,10 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard]},
-      {path: 'disease', loadChildren: './disease/disease.module#DiseaseModule'},
-      {path: 'hospital', loadChildren: './hospital/hospital.module#HospitalModule'}
+      {path: 'disease', loadChildren: './disease/disease.module#DiseaseModule', canActivate: [AuthGuard]},
+      {path: 'hospital', loadChildren: './hospital/hospital.module#HospitalModule', canActivate: [AuthGuard]},
+      {path: 'drug', loadChildren: './drug/drug.module#DrugModule', canActivate: [AuthGuard]},
+      {path: 'stock', loadChildren: './stock/stock.module#StockModule', canActivate: [AuthGuard]},
     ]
   }
 ];

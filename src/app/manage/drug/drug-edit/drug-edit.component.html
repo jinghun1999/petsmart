@@ -1,0 +1,53 @@
+<app-page-header [heading]="'商品编辑'"></app-page-header>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <h5 class="card-header">基本信息</h5>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="good_type" class="col-form-label">商品类型</label>
+            <select class="form-control" id="good_type">
+              <option>宠物药品</option>
+              <option>宠物食品</option>
+              <option>宠物玩具</option>
+              <option>其他商品</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="good_name" class="col-form-label">商品名</label>
+            <input type="text" class="form-control" id="good_name">
+          </div>
+          <div class="form-group">
+            <label for="barcode" class="col-form-label">商品条码</label>
+            <input type="text" class="form-control" id="barcode">
+          </div>
+          <div class="form-group">
+            <label for="factory" class="col-form-label">生产厂家</label>
+            <input type="text" class="form-control" id="factory">
+          </div>
+          <div class="form-group">
+            <label for="standard" class="col-form-label">包装单位</label>
+            <select class="form-control" id="standard">
+              <option>mL</option>
+              <option>盒</option>
+              <option>支</option>
+              <option>个</option>
+              <option>克</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sell_price" class="col-form-label">售价</label>
+            <input type="number" class="form-control" id="sell_price">
+          </div>
+          <div class="form-group">
+            <label for="use_method" class="col-form-label">用法用量</label>
+            <textarea class="form-control" id="use_method"></textarea>
+          </div>
+          <button type="button" class="btn btn-primary">保存</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

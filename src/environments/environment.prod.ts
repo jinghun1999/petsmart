@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'http://petapi.yinway.cn/petsmart_api/api'
 };
